@@ -1,3 +1,4 @@
+
 package org.pahappa.systems.models;
 
 /**
@@ -10,5 +11,12 @@ package org.pahappa.systems.models;
  *
  */
 public class Incident {
+	private String id;
+	private String title;
+	private String type;
+	private String status;
+	private String comment;
+	private String createdOn;
+	
 
 }
