@@ -9,7 +9,7 @@ import org.pahappa.systems.models.Incident;
 
 public class IncidentServiceImpl implements IncidentService {
 
-	private  static List<Incident> incidents = new ArrayList<Incident>();
+	private  static ArrayList<Incident> incidents = new ArrayList<Incident>();
 	private static int incidentIds=0;
 
 	@Override
