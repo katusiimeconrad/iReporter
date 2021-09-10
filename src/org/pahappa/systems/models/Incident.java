@@ -55,11 +55,7 @@ public class Incident {
 	}
 	@Override
 	public String toString() {
-		return "Incident [id=" + id + ", title=" + title + ", type=" + type + ", status=" + status + ", createdOn="
-				+ createdOn + ", comment=" + comment + ", getId()=" + getId() + ", getTitle()=" + getTitle()
-				+ ", getType()=" + getType() + ", getStatus()=" + getStatus() + ", getCreatedOn()=" + getCreatedOn()
-				+ ", getComment()=" + getComment() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + "]";
+		return title;
 	}
 	
 	
