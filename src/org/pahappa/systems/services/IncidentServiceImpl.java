@@ -18,16 +18,16 @@ public class IncidentServiceImpl implements IncidentService {
 
 
 		if (incident.getTitle()==null){
-			throw new ValidationFailedException("Null");
+			throw new ValidationFailedException("Please enter title");
 		}
 		if (incident.getTitle().isEmpty()){
-			throw new ValidationFailedException("Empty string");
+			throw new ValidationFailedException("Please enter the title");
 		}
 		if (incident.getComment()==null){
-			throw new ValidationFailedException("Null");
+			throw new ValidationFailedException("Please enter comment");
 		}
-		if (incident.getTitle().isEmpty()){
-			throw new ValidationFailedException("Empty string");
+		if (incident.getComment().isEmpty()){
+			throw new ValidationFailedException("please enter comment.");
 		}
 
 
