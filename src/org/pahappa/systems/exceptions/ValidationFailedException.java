@@ -3,7 +3,7 @@ public class ValidationFailedException extends Exception {
 
 
 	private static final long serialVersionUID = 1L;
-	ValidationFailedException(String message){
+	public ValidationFailedException(String message){
 		super(message);
 	}
 }
