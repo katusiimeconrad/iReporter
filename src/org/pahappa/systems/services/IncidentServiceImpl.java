@@ -1,14 +1,35 @@
 package org.pahappa.systems.services;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.pahappa.systems.enums.Status;
+import org.pahappa.systems.exceptions.SavingFailedException;
+import org.pahappa.systems.exceptions.ValidationFailedException;
 import org.pahappa.systems.models.Incident;
 
 public class IncidentServiceImpl implements IncidentService {
 
+	private  static ArrayList<Incident> incidents = new ArrayList<Incident>();
+	private static int incidentIds=0;
+
 	@Override
 	public Incident saveIncident(Incident incident) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+
+
+		if (((incident.getComment()!=null) && (incident.getTitle() != null)) || ((incident.getComment()!= " ") && (incident.getTitle()!= " "))){
+			incident.setId(++incidentIds);
+			incident.setStatus(Status.DRAFT);
+			incident.setCreatedOn( new Date());
+			incidents.add(incident);
+
+
+		}
+		else {
+			throw new ValidationFailedException("Title/Comment was not provided");
+		}
+		return incident;
+
 	}
 
 	@Override
