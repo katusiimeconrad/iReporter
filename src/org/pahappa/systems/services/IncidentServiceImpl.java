@@ -21,7 +21,7 @@ public class IncidentServiceImpl implements IncidentService {
 			incident.setStatus(Status.DRAFT);
 			incident.setCreatedOn( new Date());
 			incidents.add(incident);
-			System.out.println("Your incident was saved at" + incidents.indexOf(incident));
+
 
 		}
 		else {
