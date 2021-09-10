@@ -17,7 +17,7 @@ public class IncidentServiceImpl implements IncidentService {
 	public Incident saveIncident(Incident incident) throws Exception {
 
 
-		if (((incident.getComment()!=null) && (incident.getTitle() != null)) || ((incident.getComment()!= " ") && (incident.getTitle()!= " "))){
+		if (((incident.getComment()!=null) && (incident.getTitle() != null)) && ((incident.getComment()!= " ") && (incident.getTitle()!= " "))){
 			incident.setId(++incidentIds);
 			incident.setStatus(Status.DRAFT);
 			incident.setCreatedOn( new Date());
