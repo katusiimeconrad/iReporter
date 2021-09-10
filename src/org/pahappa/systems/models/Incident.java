@@ -1,5 +1,6 @@
 package org.pahappa.systems.models;
 import java.util.Date;
+import  org.pahappa.systems.enums.*;
 /**
  * The class {@code Incident} represents an occurrence, condition, 
  * or situation arising in the course of work that resulted in or could 
