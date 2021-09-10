@@ -2,6 +2,7 @@ package org.pahappa.systems.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.pahappa.systems.enums.Status;
 import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.models.Incident;
 
@@ -13,6 +14,7 @@ public class IncidentServiceImpl implements IncidentService {
 	@Override
 	public Incident saveIncident(Incident incident) throws Exception {
 		incident.setId(++incidentIds);
+		incident.setStatus(Status.DRAFT);
 
 		if ((incident.getComment()!=null) & (incident.getTitle() != null)){
 			incidents.add(incident);
