@@ -14,11 +14,12 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public Incident saveIncident(Incident incident) throws Exception {
-		incident.setId(++incidentIds);
-		incident.setStatus(Status.DRAFT);
-		incident.setCreatedOn( new Date());
+
 
 		if ((incident.getComment()!=null) & (incident.getTitle() != null)){
+			incident.setId(++incidentIds);
+			incident.setStatus(Status.DRAFT);
+			incident.setCreatedOn( new Date());
 			incidents.add(incident);
 			System.out.println("Your incident was saved at" + incidents.indexOf(incident));
 
