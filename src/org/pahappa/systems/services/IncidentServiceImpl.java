@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.pahappa.systems.enums.Status;
 import org.pahappa.systems.exceptions.SavingFailedException;
+import org.pahappa.systems.exceptions.ValidationFailedException;
 import org.pahappa.systems.models.Incident;
 
 public class IncidentServiceImpl implements IncidentService {
@@ -25,7 +26,7 @@ public class IncidentServiceImpl implements IncidentService {
 
 		}
 		else {
-			throw new SavingFailedException("Title/Comment was not provided");
+			throw new ValidationFailedException("Title/Comment was not provided");
 		}
 		return incident;
 
