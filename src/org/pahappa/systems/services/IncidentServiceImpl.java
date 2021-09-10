@@ -17,17 +17,27 @@ public class IncidentServiceImpl implements IncidentService {
 	public Incident saveIncident(Incident incident) throws Exception {
 
 
-		if (((incident.getComment()!=null) && (incident.getTitle() != null)) && ((incident.getComment()!= " ") && (incident.getTitle()!= " "))){
-			incident.setId(++incidentIds);
-			incident.setStatus(Status.DRAFT);
-			incident.setCreatedOn( new Date());
-			incidents.add(incident);
+		if (incident.getTitle()==null){
+			throw new ValidationFailedException("Null");
+		}
+		if (incident.getTitle().isEmpty()){
+			throw new ValidationFailedException("Empty string");
+		}
+		if (incident.getComment()==null){
+			throw new ValidationFailedException("Null");
+		}
+		if (incident.getTitle().isEmpty()){
+			throw new ValidationFailedException("Empty string");
+		}
 
 
-		}
-		else {
-			throw new ValidationFailedException("Title/Comment was not provided");
-		}
+
+
+		incident.setId(++incidentIds);
+		incident.setStatus(Status.DRAFT);
+		incident.setCreatedOn( new Date());
+		incidents.add(incident);
+
 		return incident;
 
 	}
