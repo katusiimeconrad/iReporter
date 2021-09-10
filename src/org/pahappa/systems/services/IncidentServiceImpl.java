@@ -86,11 +86,20 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public void deleteIncident(Incident incident) {
-		int incidentToDelete = incident.getId();
+		String incidentToDelete = incident.getTitle();
+		int incidentSize = incidents.size();
+
 		for (Incident item : incidents) {
-			if(incidentToDelete == item.getId()){
+			if(incidentToDelete == item.getTitle()){
 				incidents.remove(item);
+				System.out.println("The incident has been successfully deleted");
+				break;
 			}
+		}
+
+		int incidentSizeCheck = incidents.size();
+		if (incidentSizeCheck == incidentSize){
+		System.out.println("This incident has not been found");
 		}
 	}
 
