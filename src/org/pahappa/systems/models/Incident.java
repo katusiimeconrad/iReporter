@@ -58,10 +58,8 @@ public class Incident {
 		return title;
 	}
 
-
 	/*For purposes of testing the update*/
 //	public String toString() {
 //		return comment;
 //	}
-
 }
