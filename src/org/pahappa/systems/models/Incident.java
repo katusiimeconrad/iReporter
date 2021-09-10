@@ -10,16 +10,16 @@ import java.util.Date;
  *
  */
 public class Incident {
-    private String id;
+    private int id;
     private String title;
     private Type  type;
     private Status status;
     private Date  createdOn;
     private String comment;
-	public String getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -60,5 +60,6 @@ public class Incident {
 				+ ", getComment()=" + getComment() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
 	}
+	
 	
 }
