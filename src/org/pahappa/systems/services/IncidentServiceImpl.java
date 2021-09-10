@@ -1,5 +1,6 @@
 package org.pahappa.systems.services;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.pahappa.systems.enums.Status;
@@ -15,6 +16,7 @@ public class IncidentServiceImpl implements IncidentService {
 	public Incident saveIncident(Incident incident) throws Exception {
 		incident.setId(++incidentIds);
 		incident.setStatus(Status.DRAFT);
+		incident.setCreatedOn( new Date());
 
 		if ((incident.getComment()!=null) & (incident.getTitle() != null)){
 			incidents.add(incident);
