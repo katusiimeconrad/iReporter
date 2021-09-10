@@ -12,7 +12,7 @@ import java.util.Date;
 public class Incident {
     private String id;
     private String title;
-    private String type;
+    private Type  type;
     private Status status;
     private Date  createdOn;
     private String comment;
@@ -28,10 +28,10 @@ public class Incident {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getType() {
+	public Type getType() {
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(Type type) {
 		this.type = type;
 	}
 	public Status getStatus() {
@@ -60,5 +60,5 @@ public class Incident {
 				+ ", getComment()=" + getComment() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
 				+ ", toString()=" + super.toString() + "]";
 	}
-    
+	
 }
