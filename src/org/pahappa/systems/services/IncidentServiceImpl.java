@@ -4,10 +4,11 @@ import java.util.Date;
 import java.util.List;
 
 import org.pahappa.systems.enums.Status;
+import org.pahappa.systems.enums.Type;
 import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.exceptions.ValidationFailedException;
 import org.pahappa.systems.models.Incident;
-import org.pahappa.systems.models.Type;
+
 
 public class IncidentServiceImpl implements IncidentService {
 
@@ -55,7 +56,7 @@ public class IncidentServiceImpl implements IncidentService {
 		//[redflagIncidents] will contain all incidents in [incidents] where type is REDFLAG
 		List<Incident> redflagIncidents = new ArrayList<Incident>();
 		for (Incident incident:incidents) {
-			if( incident.getType() == Type.REDFLAG ){
+			if( incident.getType() == Type.RED_FLAG ){
 				redflagIncidents.add(incident);
 			}
 		}

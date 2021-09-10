@@ -1,8 +1,8 @@
 package org.pahappa.systems.views;
 
+import org.pahappa.systems.enums.Type;
 import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.models.Incident;
-import org.pahappa.systems.models.Type;
 import org.pahappa.systems.services.IncidentServiceImpl;
 
 public class IReporter {
@@ -21,7 +21,7 @@ public class IReporter {
 
 		Incident theft = new Incident();
 		theft.setTitle("Theft Of public funds");
-		theft.setType(Type.REDFLAG);
+		theft.setType(Type.RED_FLAG);
 		theft.setComment("Mr. Someone Embezzled funds meant for constructing a certain road");
 
 		IncidentServiceImpl incidentHelper = new IncidentServiceImpl();
