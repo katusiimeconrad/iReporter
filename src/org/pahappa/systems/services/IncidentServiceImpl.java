@@ -1,14 +1,29 @@
 package org.pahappa.systems.services;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.models.Incident;
 
 public class IncidentServiceImpl implements IncidentService {
 
+	private  static List<Incident> incidents = new ArrayList<Incident>();
+	private static int incidentIds=0;
+
 	@Override
 	public Incident saveIncident(Incident incident) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		incident.setId(++incidentIds);
+
+		if ((incident.getComment()!=null) & (incident.getTitle() != null)){
+			incidents.add(incident);
+			System.out.println("Your incident was saved at" + incidents.indexOf(incident));
+
+		}
+		else {
+			throw new SavingFailedException("Title/Comment was not provided");
+		}
+		return incident;
+
 	}
 
 	@Override
