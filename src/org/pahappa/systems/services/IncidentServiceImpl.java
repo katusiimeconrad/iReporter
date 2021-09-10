@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.pahappa.systems.enums.Status;
+import org.pahappa.systems.enums.Type;
 import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.exceptions.ValidationFailedException;
 import org.pahappa.systems.models.Incident;
@@ -61,9 +62,17 @@ public class IncidentServiceImpl implements IncidentService {
 	}
 
 	@Override
+	//creating a list to store intervention incidents
 	public List<Incident> getInterventionIncidents() {
+		List<Incident> interventionIncidents =new ArrayList<Incident>();
+		//looping through the incidents list to get intervention incidents
+		for (Incident incident:incidents) {
+			if (incident.getType()== Type.INTERVENTION) {
+				interventionIncidents.add(incident);
+			}
+		}
 		// TODO Auto-generated method stub
-		return null;
+		return interventionIncidents;
 	}
 
 	@Override
