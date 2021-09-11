@@ -58,8 +58,9 @@ public class Incident {
 		return title;
 	}
 
-	/*For purposes of testing the update*/
-//	public String toString() {
-//		return comment;
-//	}
+	public boolean equals(Incident obj) {
+		return this.getTitle() == obj.getTitle();
+	}
+
+
 }

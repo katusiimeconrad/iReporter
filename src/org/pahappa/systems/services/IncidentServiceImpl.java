@@ -44,29 +44,34 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public Incident updateIncident(Incident incident) throws Exception {
+		//Check if both the comment and title sections have been filled
+		if (incident.getTitle().isEmpty()){
+			throw new ValidationFailedException("Please enter title");
+		}else if (incident.getTitle()==null){
+			throw new ValidationFailedException("Please enter title");
+		}else if (incident.getComment().isEmpty()){
+			throw new ValidationFailedException("Please enter comment");
+		}else if (incident.getComment()==null){
+			throw new ValidationFailedException("Please enter comment");
+		}
+
+		//Searching and updating the incident
+		Incident searchResult = findIncident(incident);
+		if (searchResult == null){
+			throw new ValidationFailedException("This record does not exist");
+		}else {
+			searchResult.setTitle(incident.getTitle());
+			searchResult.setComment(incident.getComment());
+			return searchResult;
+		}
+
+		//return null;
+	}
+
+	public Incident findIncident(Incident incident) throws Exception {
 		for(Incident item: incidents){
-
-//			Check if the parameter Title matches the records in the array
-			if(incident.getTitle() == item.getTitle()){
-
-//				Check if both the comment and title sections have been filled
-				if(incident.getTitle().isEmpty()){
-					throw new ValidationFailedException("Please enter title");
-				}else if(incident.getTitle()==null){
-					throw new ValidationFailedException("Please enter title");
-				}else if(incident.getComment().isEmpty()){
-					throw new ValidationFailedException("Please enter comment");
-				}else if(incident.getComment()==null){
-					throw new ValidationFailedException("Please enter comment");
-				}
-
-//				Update the sections if found not to be empty or null
-				item.setTitle(incident.getTitle());
-				item.setComment(incident.getComment());
-
-				return item;
-			}else{
-				throw new ValidationFailedException("This record does not exist.");
+			if(item.getTitle().contains(incident.getTitle())){
+				return  item;
 			}
 		}
 		return null;
