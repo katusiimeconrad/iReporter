@@ -104,15 +104,18 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public Incident getIncidentOfId(int id) {
-		// TODO Auto-generated method stub
+		for(Incident incident:incidents){
+			if(incident.getId() == id){
+				return incident;
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public void deleteIncident(Incident incident) {
-		// TODO Auto-generated method stub
 		
 	}
 
-	
+
 }
