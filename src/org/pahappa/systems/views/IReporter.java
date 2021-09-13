@@ -1,4 +1,5 @@
 package org.pahappa.systems.views;
+import org.pahappa.systems.services.IncidentServiceImpl;
 
 import org.pahappa.systems.enums.Type;
 import org.pahappa.systems.exceptions.SavingFailedException;
@@ -8,6 +9,7 @@ import org.pahappa.systems.services.IncidentServiceImpl;
 public class IReporter {
 	
 	public static void main(String[] args) {
+
 		System.out.println("iReporter test");
 
 
@@ -37,6 +39,13 @@ public class IReporter {
 		//Testing getRedflagIncidents
 		System.out.println("===========Testing RedFlag Incidents==================");
 		System.out.println(incidentHelper.getRedflagIncidents());
+
+		
+		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
+		
+		System.out.println(incidentCollection.getAllIncidents());
+	
+
 	}
 	
 }
