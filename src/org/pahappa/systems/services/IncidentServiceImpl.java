@@ -45,13 +45,13 @@ public class IncidentServiceImpl implements IncidentService {
 	@Override
 	public Incident updateIncident(Incident incident) throws Exception {
 		//Check if both the comment and title sections have been filled
-		if (incident.getTitle().isEmpty()){
+		if (incident.getTitle()==null){
 			throw new ValidationFailedException("Please enter title");
-		}else if (incident.getTitle()==null){
+		}else if (incident.getTitle().isEmpty()){
 			throw new ValidationFailedException("Please enter title");
-		}else if (incident.getComment().isEmpty()){
-			throw new ValidationFailedException("Please enter comment");
 		}else if (incident.getComment()==null){
+			throw new ValidationFailedException("Please enter comment");
+		}else if (incident.getComment().isEmpty()){
 			throw new ValidationFailedException("Please enter comment");
 		}
 
