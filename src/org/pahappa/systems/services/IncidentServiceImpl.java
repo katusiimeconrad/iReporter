@@ -41,7 +41,37 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public Incident updateIncident(Incident incident) throws Exception {
-		// TODO Auto-generated method stub
+		if (incident.getTitle()==null){
+			throw new ValidationFailedException("Please enter title");
+		}
+		if (incident.getTitle().isEmpty()){
+			throw new ValidationFailedException("Please enter the title");
+		}
+		if (incident.getComment()==null){
+			throw new ValidationFailedException("Please enter comment");
+		}
+		if (incident.getComment().isEmpty()){
+			throw new ValidationFailedException("please enter comment.");
+		}
+
+		Incident searchResult = findIncident(incident);
+		if(searchResult == null){
+			throw new ValidationFailedException("No matching record found");
+		}
+
+		searchResult.setTitle(incident.getTitle());
+		searchResult.setType(incident.getType());
+		searchResult.setComment(incident.getComment());
+
+		return searchResult;
+	}
+
+	public Incident findIncident(Incident incident){
+		for(Incident item: incidents){
+			if(item.getTitle().contains(incident.getTitle())){
+				return item;
+			}
+		}
 		return null;
 	}
 
