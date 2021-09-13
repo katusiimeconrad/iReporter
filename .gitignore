@@ -10,8 +10,9 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Folders
+# Unwanted files
 .idea/
+testproject.iml
 
 # Package Files #
 *.jar

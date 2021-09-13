@@ -80,7 +80,7 @@ public class IncidentServiceImpl implements IncidentService {
 	@Override
 	public List<Incident> getAllIncidents() {
 		// TODO Auto-generated method stub
-		return null;
+		return incidents;
 	}
 
 	@Override
