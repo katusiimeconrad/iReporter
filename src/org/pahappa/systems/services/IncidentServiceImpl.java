@@ -94,8 +94,14 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public void deleteIncident(Incident incident) {
-		
+		if(incident != null){
+			if(incidentExists(incident)){
+				incident.remove()
+			}else{
+				System.out.println("There is no record of this incident")
+			}
+		}else{
+			System.out.println("Please an enter an incident to delete");
+		}
 	}
-
-
 }
