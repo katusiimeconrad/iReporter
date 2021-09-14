@@ -1,3 +1,4 @@
+
 package org.pahappa.systems.models;
 import java.util.Date;
 import  org.pahappa.systems.enums.*;
@@ -57,6 +58,4 @@ public class Incident {
 	public String toString() {
 		return title;
 	}
-	
-	
 }
