@@ -25,20 +25,22 @@ public class IReporter {
 		Incident theft2 = new Incident();
 		theft2.setTitle("Theft of govt funds");
 		theft2.setType(Type.RED_FLAG);
-		theft2.setComment("This was the second incident");
+		theft2.setComment("The guy was nabbed");
 
 		IncidentServiceImpl incidentHelper = new IncidentServiceImpl();
 
 		try {
 			System.out.println("=======Saving theft and theft1======");
-			System.out.println(incidentHelper.saveIncident(theft));
-			System.out.println(incidentHelper.saveIncident(theft1));
+			Incident saved = incidentHelper.saveIncident(theft);
+			Incident saved1 = incidentHelper.saveIncident(theft1);
+			System.out.println(saved);
+			System.out.println(saved1);
+			saved1.setTitle("Theft of local government funds.");
+			System.out.println(incidentHelper.updateIncident(saved1));
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		System.out.println("========Updating the object with a similar title=========");
-		System.out.println(incidentHelper.updateIncident(theft2));
 
 		//Testing getRedflagIncidents
 		System.out.println("===========Testing RedFlag Incidents==================");
@@ -47,7 +49,7 @@ public class IReporter {
 		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
 
 		System.out.println(incidentCollection.getAllIncidents());
-	
+
 
 	}
 	
