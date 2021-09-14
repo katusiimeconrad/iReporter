@@ -12,6 +12,7 @@ public class IReporter {
 	
 	public static void main(String[] args) throws Exception {
 		IncidentServiceImpl servicehelper =new IncidentServiceImpl();
+		Incident incident1 = new Incident();
 		System.out.println("**WELCOME TO IREPORTER SYSTEM**\n" +
 				"DESCRIPTION OF IREPORTER \n" +
 				"Corruption is a huge bane to Africa’s development.\n" +
@@ -35,7 +36,31 @@ public class IReporter {
 			option =sc.nextInt();
 			switch (option){
 				case 1:
-					System.out.println("hello ben");
+					System.out.println("Please select(Number) the type of your incident \n" +
+							"1 ---> corruption Incident \n" +
+							"2 ---> Intervention Incident" + "\n");
+					int type = sc.nextInt();
+
+					System.out.println("Please enter the title of your incident \n");
+					String title = sc.nextLine();
+
+					System.out.println("Enter your comment \n");
+					String comment = sc.nextLine();
+
+					if (type == 1){
+						incident1.setType(Type.RED_FLAG);
+					}
+					if (type == 2){
+
+						incident1.setType(Type.INTERVENTION);
+					}
+					incident1.setTitle(title);
+					incident1.setComment(comment);
+
+					Incident savedIncident = servicehelper.saveIncident(incident1);
+					System.out.println("Your report has been saved" + "\n");
+					System.out.println(savedIncident);
+
 					break;
 				case 2:
 					System.out.println("hello andrew");
