@@ -41,8 +41,15 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public Incident updateIncident(Incident incident) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		for(Incident item: incidents){
+			if(item.getId() == incident.getId()){
+				item.setTitle(incident.getTitle());
+				item.setType(incident.getType());
+				item.setComment(incident.getComment());
+				return item;
+			}
+		}
+		throw new SavingFailedException("Record not found");
 	}
 
 	@Override
