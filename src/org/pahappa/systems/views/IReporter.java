@@ -6,9 +6,30 @@ import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.models.Incident;
 import org.pahappa.systems.services.IncidentServiceImpl;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class IReporter {
+
+	public void printIncidents(List<Incident> incidents){
+		System.out.println("======== All Incidents =======");
+		int counter = 0;
+		Incident in = new Incident();
+		for(Incident item:incidents){
+			in.setCounter(++counter);
+			System.out.println(in.getCounter()+". "+item);
+		}
+	}
+
+	public void printIncidents(List<Incident> incidents, String type){
+		System.out.println("======== "+ type +" =======");
+		int counter = 0;
+		Incident in = new Incident();
+		for(Incident item:incidents){
+			in.setCounter(++counter);
+			System.out.println(in.getCounter()+". "+item);
+		}
+	}
 	
 	public static void main(String[] args) throws Exception {
 		IncidentServiceImpl servicehelper =new IncidentServiceImpl();
@@ -41,7 +62,7 @@ public class IReporter {
 					System.out.println("hello andrew");
 					break;
 				case 3:
-					System.out.println("hello sherifa");
+					System.out.println("hello collins");
 					break;
 				case 4:
 					System.out.println("hello katusiime kabogoza");
