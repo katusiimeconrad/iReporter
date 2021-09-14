@@ -44,8 +44,8 @@ public class IReporter {
 		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
 		
 		System.out.println(incidentCollection.getAllIncidents());
-	
 
+		System.out.println(incidentCollection.deleteIncident(theft));
 	}
 	
 }
