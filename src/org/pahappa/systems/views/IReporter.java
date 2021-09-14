@@ -6,58 +6,79 @@ import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.models.Incident;
 import org.pahappa.systems.services.IncidentServiceImpl;
 
+import java.util.List;
+import java.util.Scanner;
+
 public class IReporter {
+
+	public void printIncidents(List<Incident> incidents){
+		System.out.println("======== All Incidents =======");
+		int counter = 0;
+		Incident in = new Incident();
+		for(Incident item:incidents){
+			in.setCounter(++counter);
+			System.out.println(in.getCounter()+". "+item);
+		}
+	}
+
+	public void printIncidents(List<Incident> incidents, String type){
+		System.out.println("======== "+ type +" =======");
+		int counter = 0;
+		Incident in = new Incident();
+		for(Incident item:incidents){
+			in.setCounter(++counter);
+			System.out.println(in.getCounter()+". "+item);
+		}
+	}
 	
 	public static void main(String[] args) throws Exception {
-
-		System.out.println("iReporter test");
-
-		Incident theft = new Incident();
-		theft.setTitle("Theft Of public funds");
-		theft.setType(Type.RED_FLAG);
-		theft.setComment("Mr. Someone Embezzled funds meant for constructing a certain road");
-
-		Incident theft1 = new Incident();
-		theft1.setTitle("Theft of govt funds");
-		theft1.setType(Type.RED_FLAG);
-		theft1.setComment("The guy was nabbed");
-
-		Incident theft2 = new Incident();
-		theft2.setTitle("Theft of govt funds");
-		theft2.setType(Type.RED_FLAG);
-		theft2.setComment("The guy was nabbed");
-
-		IncidentServiceImpl incidentHelper = new IncidentServiceImpl();
-
-		try {
-			System.out.println("=======Saving theft and theft1======");
-			Incident saved = incidentHelper.saveIncident(theft);
-			Incident saved1 = incidentHelper.saveIncident(theft1);
-			System.out.println(saved);
-			System.out.println(saved1);
-			saved1.setTitle("Theft of local government funds.");
-			System.out.println(incidentHelper.updateIncident(saved1));
-
-		} catch (Exception e) {
-			e.printStackTrace();
+		IncidentServiceImpl servicehelper =new IncidentServiceImpl();
+		System.out.println("**WELCOME TO IREPORTER SYSTEM**\n" +
+				"DESCRIPTION OF IREPORTER \n" +
+				"Corruption is a huge bane to Africa’s development.\n" +
+				"African countries must develop novel and localised solutions that will curb this menace, hence the birth of iReporter.\n" +
+				"iReporter enables any/every citizen to bring any form of corruption to the notice of appropriate authorities and the general public.\n" +
+				"Users can also report on things that needs government intervention...........\n" +
+				"*****************************************************\n" +
+				"WHAT WOULD YOU LIKE TO DO {SELECT AN OPTION}.\n");
+         boolean i =true;
+		while (i){
+			System.out.println("1.get all incidents{view reports}\n" +
+					"2.save icidents.\n" +
+					"3.update incidemts.\n" +
+					"4.delete incidents{delete}\n" +
+					"5.total number of incidents{count}\n" +
+					"0. exit\n" +
+					"enter ur option:\n" +
+					" ");
+			Scanner sc = new Scanner(System.in);
+			int option;
+			option =sc.nextInt();
+			switch (option){
+				case 1:
+					System.out.println("hello ben");
+					break;
+				case 2:
+					System.out.println("hello andrew");
+					break;
+				case 3:
+					System.out.println("hello collins");
+					break;
+				case 4:
+					System.out.println("hello katusiime kabogoza");
+					break;
+				case 5:
+					System.out.println("total  number of incidents "+servicehelper.countIncidents());
+					break;
+				case 0:
+					i=false;
+					break;
+				default:
+					System.out.println("wrong input");
+			}
 		}
 
-		//Testing getRedflagIncidents
-		System.out.println("===========Testing RedFlag Incidents==================");
-		System.out.println(incidentHelper.getRedflagIncidents());
-		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
-
-		System.out.println(incidentCollection.getAllIncidents());
 
 
-		//Test delete all incidents
-		incidentCollection.deleteIncident(theft);
-
-		//Test for if incident exists
-		System.out.println(incidentCollection.incidentExists(theft));
-
-	
-		//Testing count all incidents
-		System.out.println(incidentHelper.countIncidents());
 	}
 }
