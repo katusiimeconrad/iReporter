@@ -20,8 +20,6 @@ public class IReporter {
 		IncidentServiceImpl incidentHelper = new IncidentServiceImpl();
 
 
-
-
 		try {
 			incidentHelper.saveIncident(theft);
 		} catch (Exception e) {
@@ -37,10 +35,7 @@ public class IReporter {
 		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
 		
 		System.out.println(incidentCollection.getAllIncidents());
-
-		//Testfor if incident exists
-		System.out.println(incidentCollection.incidentExists(theft));
-
+	
 
 	}
 	
