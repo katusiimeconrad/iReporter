@@ -30,13 +30,15 @@ public class IReporter {
 		//Testing getRedflagIncidents
 		System.out.println("===========Testing RedFlag Incidents==================");
 		System.out.println(incidentHelper.getRedflagIncidents());
-
 		
 		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
 		
 		System.out.println(incidentCollection.getAllIncidents());
-	
 
-	}
+		//Testfor if incident exists
+		System.out.println(incidentCollection.incidentExists(theft));
 	
+		//Testing count all incidents
+		System.out.println(incidentHelper.countIncidents());
+	}
 }
