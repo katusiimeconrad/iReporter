@@ -47,6 +47,8 @@ public class IncidentServiceImpl implements IncidentService {
 				item.setType(incident.getType());
 				item.setComment(incident.getComment());
 				return item;
+			}else{
+				throw new ValidationFailedException("Record not found");
 			}
 		}
 		return null;
