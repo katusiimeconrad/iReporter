@@ -49,8 +49,13 @@ public class IReporter {
 
 		System.out.println(incidentCollection.getAllIncidents());
 
+
+		//Test delete all incidents
+		System.out.println(incidentCollection.deleteIncident(theft));
+
 		//Testfor if incident exists
 		System.out.println(incidentCollection.incidentExists(theft));
+
 	
 		//Testing count all incidents
 		System.out.println(incidentHelper.countIncidents());
