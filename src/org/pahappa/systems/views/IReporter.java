@@ -36,6 +36,9 @@ public class IReporter {
 			option =sc.nextInt();
 			switch (option){
 				case 1:
+
+					break;
+				case 2:
 					System.out.println("Please select(Number) the type of your incident \n" +
 							"1 ---> corruption Incident \n" +
 							"2 ---> Intervention Incident" + "\n");
@@ -61,9 +64,6 @@ public class IReporter {
 					System.out.println("Your report has been saved" + "\n");
 					System.out.println(savedIncident);
 
-					break;
-				case 2:
-					System.out.println("hello andrew");
 					break;
 				case 3:
 					System.out.println("hello sherifa");
