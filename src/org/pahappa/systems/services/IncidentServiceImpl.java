@@ -94,7 +94,7 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public void deleteIncident(Incident incident) {
-		
+		// TODO Auto-generated method stub
 	}
 
 

@@ -12,21 +12,14 @@ public class IReporter {
 
 		System.out.println("iReporter test");
 
-
-
-
-
-
-
-
-
-
 		Incident theft = new Incident();
 		theft.setTitle("Theft Of public funds");
 		theft.setType(Type.RED_FLAG);
 		theft.setComment("Mr. Someone Embezzled funds meant for constructing a certain road");
 
 		IncidentServiceImpl incidentHelper = new IncidentServiceImpl();
+
+
 
 
 		try {
@@ -44,7 +37,10 @@ public class IReporter {
 		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
 		
 		System.out.println(incidentCollection.getAllIncidents());
-	
+
+		//Testfor if incident exists
+		System.out.println(incidentCollection.incidentExists(theft));
+
 
 	}
 	
