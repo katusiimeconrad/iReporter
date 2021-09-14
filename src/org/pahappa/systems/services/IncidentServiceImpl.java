@@ -96,9 +96,9 @@ public class IncidentServiceImpl implements IncidentService {
 	public void deleteIncident(Incident incident) {
 		if(incident != null){
 			if(incidentExists(incident)){
-				incident.remove()
+				incident.remove();
 			}else{
-				System.out.println("There is no record of this incident")
+				System.out.println("There is no record of this incident");
 			}
 		}else{
 			System.out.println("Please an enter an incident to delete");
