@@ -80,8 +80,7 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public int countIncidents() {
-		// TODO Auto-generated method stub
-		return 0;
+		return incidents.size();
 	}
 
 	@Override
