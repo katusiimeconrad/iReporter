@@ -57,6 +57,4 @@ public class Incident {
 	public String toString() {
 		return title;
 	}
-	
-	
 }
