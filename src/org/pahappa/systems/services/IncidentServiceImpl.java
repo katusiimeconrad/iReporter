@@ -41,8 +41,15 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public Incident updateIncident(Incident incident) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		for(Incident item: incidents){
+			if(item.getId() == incident.getId()){
+				item.setTitle(incident.getTitle());
+				item.setType(incident.getType());
+				item.setComment(incident.getComment());
+				return item;
+			}
+		}
+		throw new SavingFailedException("Record not found");
 	}
 
 	@Override
@@ -85,7 +92,15 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public boolean incidentExists(Incident incident) {
-		// TODO Auto-generated method stub
+		String titleOfpassedIncident = incident.getTitle();
+		for(Incident item:incidents){
+			String titleOfIncident = item.getTitle();
+			if(titleOfIncident == titleOfpassedIncident){
+				if(item.getComment() == incident.getComment() && item.getType() == incident.getType()){
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -101,8 +116,17 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public void deleteIncident(Incident incident) {
-		
+		if(incident != null){
+			if(incidentExists(incident)){
+				incident.remove();
+			}else{
+				System.out.println("There is no record of this incident");
+			}
+		}else{
+			System.out.println("Please an enter an incident to delete");
+		}
 	}
+
 
 
 }
