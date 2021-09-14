@@ -37,6 +37,7 @@ public class IReporter {
 		
 		System.out.println(incidentCollection.getAllIncidents());
 
+		//Test delete all incidents
 		System.out.println(incidentCollection.deleteIncident(theft));
 	
 		//Testing count all incidents
