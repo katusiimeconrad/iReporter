@@ -92,7 +92,15 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public boolean incidentExists(Incident incident) {
-		// TODO Auto-generated method stub
+		String titleOfpassedIncident = incident.getTitle();
+		for(Incident item:incidents){
+			String titleOfIncident = item.getTitle();
+			if(titleOfIncident == titleOfpassedIncident){
+				if(item.getComment() == incident.getComment() && item.getType() == incident.getType()){
+					return true;
+				}
+			}
+		}
 		return false;
 	}
 
@@ -108,7 +116,7 @@ public class IncidentServiceImpl implements IncidentService {
 
 	@Override
 	public void deleteIncident(Incident incident) {
-		
+		// TODO Auto-generated method stub
 	}
 
 
