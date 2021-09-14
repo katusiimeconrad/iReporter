@@ -12,15 +12,6 @@ public class IReporter {
 
 		System.out.println("iReporter test");
 
-
-
-
-
-
-
-
-
-
 		Incident theft = new Incident();
 		theft.setTitle("Theft Of public funds");
 		theft.setType(Type.RED_FLAG);
@@ -41,11 +32,14 @@ public class IReporter {
 		System.out.println(incidentHelper.getRedflagIncidents());
 
 		
+		
 		IncidentServiceImpl incidentCollection = new IncidentServiceImpl();
 		
 		System.out.println(incidentCollection.getAllIncidents());
 
 		System.out.println(incidentCollection.deleteIncident(theft));
-	}
 	
+		//Testing count all incidents
+		System.out.println(incidentHelper.countIncidents());
+	}
 }
