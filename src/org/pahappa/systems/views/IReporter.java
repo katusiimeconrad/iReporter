@@ -50,7 +50,7 @@ public class IReporter {
 
 		System.out.println(incidentCollection.getAllIncidents());
 
-
+		//Testing count all incidents
+		System.out.println(incidentHelper.countIncidents());
 	}
-	
 }
