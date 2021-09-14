@@ -65,9 +65,17 @@ public class IncidentServiceImpl implements IncidentService {
 	}
 
 	@Override
+	//creating a list to store intervention incidents
 	public List<Incident> getInterventionIncidents() {
+		List<Incident> interventionIncidents =new ArrayList<Incident>();
+		//looping through the incidents list to get intervention incidents
+		for (Incident incident:incidents) {
+			if (incident.getType()== Type.INTERVENTION) {
+				interventionIncidents.add(incident);
+			}
+		}
 		// TODO Auto-generated method stub
-		return null;
+		return interventionIncidents;
 	}
 
 	@Override
