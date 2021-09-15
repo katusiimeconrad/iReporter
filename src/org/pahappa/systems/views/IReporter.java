@@ -79,7 +79,7 @@ public class IReporter {
 		incidentFactory();
 
 		IncidentServiceImpl serviceHelper =new IncidentServiceImpl();
-		Incident incident1 = new Incident();
+
 		System.out.println("**WELCOME TO IREPORTER SYSTEM**\n" +
 				"DESCRIPTION OF IREPORTER \n" +
 				"Corruption is a huge bane to Africa’s development.\n" +
@@ -165,14 +165,15 @@ public class IReporter {
 					}
 					break;
 				case 2:
+					Incident incident1 = new Incident();
 					System.out.println("Please select(Number) the type of your incident \n" +
 							"1 ---> corruption Incident \n" +
 							"2 ---> Intervention Incident" + "\n");
 					int type = sc.nextInt();
 
 					System.out.println("Please enter the title of your incident \n");
+					sc.nextLine();
 					String title = sc.nextLine();
-
 					System.out.println("Enter your comment \n");
 					String comment = sc.nextLine();
 
