@@ -6,6 +6,7 @@ import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.models.Incident;
 import org.pahappa.systems.services.IncidentServiceImpl;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -200,6 +201,8 @@ public class IReporter {
 							"2 ---> Intervention Incident" + "\n");
 					int type = sc.nextInt();
 
+					sc.nextLine();
+
 					System.out.println("Please enter the title of your incident \n");
 					sc.nextLine();
 					String title = sc.nextLine();
@@ -231,8 +234,25 @@ public class IReporter {
 
 					break;
 				case 4:
-					System.out.println("hello katusiime kabogoza");
-					break;
+					while (true) {
+						printIncidents(serviceHelper.getAllIncidents(), "All Incidents");
+						System.out.println("Please type the number of the incident you would like to delete");
+						System.out.println("To exit, type 00");
+						Scanner y = new Scanner(System.in);
+						option = y.nextInt();
+
+						if(option == 00){
+							break;
+						}
+						if(option > serviceHelper.getAllIncidents().size() || option == 0 ) {
+							break;
+						}
+						else
+							System.out.println("The incident you have deleted is:" + serviceHelper.getAllIncidents().get(option - 1) );
+							serviceHelper.deleteIncident(serviceHelper.getAllIncidents().get(option - 1));
+					}
+
+						break;
 				case 5:
 					System.out.println("Total  number of incidents "+ serviceHelper.countIncidents());
 					break;
