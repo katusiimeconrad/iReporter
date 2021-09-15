@@ -6,12 +6,13 @@ import org.pahappa.systems.exceptions.SavingFailedException;
 import org.pahappa.systems.models.Incident;
 import org.pahappa.systems.services.IncidentServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class IReporter {
 
-	public void printIncidents(List<Incident> incidents){
+	public static void printIncidents(List<Incident> incidents){
 		System.out.println("======== All Incidents =======");
 		int counter = 0;
 		Incident in = new Incident();
@@ -21,7 +22,12 @@ public class IReporter {
 		}
 	}
 
-	public void printIncidents(List<Incident> incidents, String type){
+	/**
+	 * Function takes in a list of {@link Incident}s with a Title, and prints them as options
+	 * @param incidents
+	 * @param type
+	 */
+	public static void printIncidents(List<Incident> incidents, String type){
 		System.out.println("======== "+ type +" =======");
 		int counter = 0;
 		Incident in = new Incident();
@@ -30,8 +36,48 @@ public class IReporter {
 			System.out.println(in.getCounter()+". "+item);
 		}
 	}
+
+	/**
+	 * Prints the details of an incident and displays the back option
+	 * @param incident
+	 */
+	public static void printIncident(Incident incident){
+		System.out.println("Incident Title: " + incident.getTitle() );
+		System.out.println("Incident Type: " + incident.getType() );
+		System.out.println("Incident Comment: " + incident.getComment() );
+		System.out.println("Incident Status: " + incident.getStatus() );
+		System.out.println("Incident Date Created: " + incident.getCreatedOn() );
+
+		//Option to go back
+		System.out.println("Enter 0 to return to the previous menu");
+	}
+
+	/**
+	 * Function creates dummy incidents, for demonstration purposes.
+	 * @throws Exception
+	 */
+	public static void incidentFactory() throws Exception {
+		IncidentServiceImpl incidentService = new IncidentServiceImpl();
+
+
+		String[] incidentTitles = new String[]{"Theft of Funds", "Bribe", "Bad road", "Low labour"};
+		String[] incidentComments = new String[]{"Money allocated to health workers", "Officer Bribes", "The road to Kireka", "Poor pay to traffic officers"};
+		Type[] incidentTypes = new Type[]{Type.RED_FLAG, Type.RED_FLAG, Type.INTERVENTION, Type.INTERVENTION};
+
+		for (int i = 0; i < incidentTitles.length ; i++) {
+			Incident incident = new Incident();
+			incident.setTitle(incidentTitles[i]);
+			incident.setComment(incidentComments[i]);
+			incident.setType(incidentTypes[i]);
+			incidentService.saveIncident(incident);
+		}
+
+	}
 	
 	public static void main(String[] args) throws Exception {
+		//Setting up dummy incidents
+		incidentFactory();
+
 		IncidentServiceImpl serviceHelper =new IncidentServiceImpl();
 		Incident incident1 = new Incident();
 		System.out.println("**WELCOME TO IREPORTER SYSTEM**\n" +
@@ -70,11 +116,45 @@ public class IReporter {
 						int incidentOption;
 						incidentOption = scanner.nextInt();
 						switch (incidentOption) {
-							case 1: System.out.println("Red Flag Incidents : \n" + serviceHelper.getRedflagIncidents());
+
+							//Getting RedFlag Incidents
+							case 1: System.out.println("Red Flag Incidents : \n");
+									while (true) {
+										printIncidents(serviceHelper.getRedflagIncidents(), "Red_Flag Incidents");
+
+										//Option to capture Input
+										option = scanner.nextInt();
+										if(option > serviceHelper.getRedflagIncidents().size() || option == 0 ) {
+											break;
+										}
+										else
+											//Print the selected Option
+											//Option -1 : To refer to the actual index
+											printIncident(serviceHelper.getRedflagIncidents().get(option - 1));
+									}
 							break;
-							case 2: System.out.println("Intervention Incidents : \n" + serviceHelper.getInterventionIncidents());
+							case 2: System.out.println("Intervention Incidents : \n");
+								while (true) {
+									printIncidents(serviceHelper.getInterventionIncidents(), "Intervention Incidents");
+
+									option = scanner.nextInt();
+									if (option > serviceHelper.getInterventionIncidents().size() || option == 0 ) {
+										break;
+									} else
+										printIncident(serviceHelper.getInterventionIncidents().get(option - 1 ));
+								}
 							break;
-							case 3: System.out.println("All Incidents : \n" + serviceHelper.getAllIncidents());
+							case 3: System.out.println("All Incidents : \n");
+								while (true) {
+									printIncidents(serviceHelper.getAllIncidents(), "All Incidents");
+
+									option = scanner.nextInt();
+									if(option > serviceHelper.getAllIncidents().size() || option == 0 ) {
+										break;
+									}
+									else
+										printIncident(serviceHelper.getAllIncidents().get(option - 1));
+								}
 							break;
 							case 0: x = false;
 									System.out.println("Exiting ....");
@@ -118,7 +198,7 @@ public class IReporter {
 					System.out.println("hello katusiime kabogoza");
 					break;
 				case 5:
-					System.out.println("Total  number of incidents "+serviceHelper.countIncidents());
+					System.out.println("Total  number of incidents "+ serviceHelper.countIncidents());
 					break;
 				case 0:
 					i=false;
