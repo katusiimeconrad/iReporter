@@ -43,30 +43,25 @@ public class IReporter {
 
 	/**
 	 * This method helps to call the update method to update an incident.
-	 * @param incidents
-	 * @param chosen
+	 * @param incident
 	 * @return
 	 */
-	public static Incident check(List<Incident> incidents, int chosen) {
+	public static Incident check(Incident incident) {
 		Scanner sc = new Scanner(System.in);
-		for (Incident item : incidents) {
-			if (item.getCounter() == chosen) {
-				System.out.println("Enter the new Title: ");
-				item.setTitle(sc.nextLine());
-				System.out.println("Choose 1 for Corruption Incident or 2 for Intervention incident");
-				int type3 = sc.nextInt();
-				sc.nextLine();
-				if (type3 == 1) {
-					item.setType(Type.RED_FLAG);
-				} else if (type3 == 2) {
-					item.setType(Type.INTERVENTION);
-				}
-				System.out.println("Enter the new Comment");
-				item.setComment(sc.nextLine());
-				return item;
-			}
+		System.out.println("Enter the new Title: ");
+		incident.setTitle(sc.nextLine());
+		System.out.println("Choose 1 for Corruption Incident or 2 for Intervention incident");
+		int type3 = sc.nextInt();
+		sc.nextLine();
+		if (type3 == 1) {
+			incident.setType(Type.RED_FLAG);
+		} else if (type3 == 2) {
+			incident.setType(Type.INTERVENTION);
 		}
-		return null;
+		System.out.println("Enter the new Comment");
+		incident.setComment(sc.nextLine());
+		return incident;
+
 	}
 
 	/**
@@ -119,7 +114,7 @@ public class IReporter {
 				"Users can also report on things that needs government intervention...........\n" +
 				"*****************************************************\n" +
 				"WHAT WOULD YOU LIKE TO DO {SELECT AN OPTION}.\n");
-         boolean i =true;
+		boolean i =true;
 		while (i){
 			System.out.println("1. Get Incidents\n" +
 					"2. Create Record\n" +
@@ -235,7 +230,7 @@ public class IReporter {
 					System.out.println("===== Please Choose the number of the incident to edit =====");
 					printIncidents(serviceHelper.getAllIncidents());
 					int chosen = sc.nextInt();
-					System.out.println(check(serviceHelper.getAllIncidents(), chosen));
+					System.out.println(check(serviceHelper.getAllIncidents().get(chosen-1)));
 
 					break;
 				case 4:
