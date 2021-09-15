@@ -33,7 +33,7 @@ public class IReporter {
 	
 	public static void main(String[] args) throws Exception {
 		IncidentServiceImpl serviceHelper =new IncidentServiceImpl();
-		Incident incident1 = new Incident();
+
 		System.out.println("**WELCOME TO IREPORTER SYSTEM**\n" +
 				"DESCRIPTION OF IREPORTER \n" +
 				"Corruption is a huge bane to Africa’s development.\n" +
@@ -85,6 +85,7 @@ public class IReporter {
 					}
 					break;
 				case 2:
+					Incident incident1 = new Incident();
 					System.out.println("Please select(Number) the type of your incident \n" +
 							"1 ---> corruption Incident \n" +
 							"2 ---> Intervention Incident" + "\n");
