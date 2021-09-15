@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class IReporter {
 
-	public void printIncidents(List<Incident> incidents){
+	public static void printIncidents(List<Incident> incidents){
 		System.out.println("======== All Incidents =======");
 		int counter = 0;
 		Incident in = new Incident();
@@ -21,7 +21,7 @@ public class IReporter {
 		}
 	}
 
-	public void printIncidents(List<Incident> incidents, String type){
+	public static void printIncidents(List<Incident> incidents, String type){
 		System.out.println("======== "+ type +" =======");
 		int counter = 0;
 		Incident in = new Incident();
@@ -62,7 +62,27 @@ public class IReporter {
 					System.out.println("hello andrew");
 					break;
 				case 3:
-					System.out.println("hello collins");
+					Incident incident1 = new Incident();
+					System.out.println("===== Please Choose the number of the incident to edit =====");
+					printIncidents(servicehelper.getAllIncidents());
+					int chosen = sc.nextInt();
+					sc.nextLine();
+					for(Incident item: servicehelper.getAllIncidents()){
+						if(item.getCounter() == chosen){
+							System.out.println("Enter the new Title: ");
+							incident1.setTitle(sc.nextLine());
+							System.out.println("Choose 1 for Corruption Incident or 2 for Intervention incident");
+							int type = sc.nextInt();
+							if(type == 1){
+								incident1.setType(Type.RED_FLAG);
+							}else if(type == 2){
+								incident1.setType(Type.INTERVENTION);
+							}
+							System.out.println("Enter the new Comment");
+							incident1.setComment(sc.nextLine());
+							System.out.println(servicehelper.updateIncident(incident1));
+						}
+					}
 					break;
 				case 4:
 					System.out.println("hello katusiime kabogoza");
