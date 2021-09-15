@@ -91,8 +91,8 @@ public class IReporter {
 					int type = sc.nextInt();
 
 					System.out.println("Please enter the title of your incident \n");
+					sc.nextLine();
 					String title = sc.nextLine();
-
 					System.out.println("Enter your comment \n");
 					String comment = sc.nextLine();
 
