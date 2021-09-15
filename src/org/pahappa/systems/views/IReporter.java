@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class IReporter {
 
-	public void printIncidents(List<Incident> incidents){
+	public static void printIncidents(List<Incident> incidents){
 		System.out.println("======== All Incidents =======");
 		int counter = 0;
 		Incident in = new Incident();
@@ -21,7 +21,7 @@ public class IReporter {
 		}
 	}
 
-	public void printIncidents(List<Incident> incidents, String type){
+	public static void printIncidents(List<Incident> incidents, String type){
 		System.out.println("======== "+ type +" =======");
 		int counter = 0;
 		Incident in = new Incident();
@@ -33,7 +33,7 @@ public class IReporter {
 	
 	public static void main(String[] args) throws Exception {
 		IncidentServiceImpl serviceHelper =new IncidentServiceImpl();
-		Incident incident1 = new Incident();
+//		Incident incident1 = new Incident();
 		System.out.println("**WELCOME TO IREPORTER SYSTEM**\n" +
 				"DESCRIPTION OF IREPORTER \n" +
 				"Corruption is a huge bane to Africa’s development.\n" +
@@ -88,7 +88,10 @@ public class IReporter {
 					System.out.println("Please select(Number) the type of your incident \n" +
 							"1 ---> corruption Incident \n" +
 							"2 ---> Intervention Incident" + "\n");
+					Incident incident1 = new Incident();
 					int type = sc.nextInt();
+
+					sc.nextLine();
 
 					System.out.println("Please enter the title of your incident \n");
 					String title = sc.nextLine();
@@ -115,8 +118,23 @@ public class IReporter {
 					System.out.println("hello collins");
 					break;
 				case 4:
-					System.out.println("hello katusiime kabogoza");
-					break;
+
+						printIncidents(serviceHelper.getAllIncidents());
+
+						List<Incident> incidentsList = serviceHelper.getAllIncidents();
+
+						System.out.println("Please select the number identification of the incident you would like to delete");
+						Scanner y = new Scanner(System.in);
+
+						int numberId = y.nextInt();
+
+							for (Incident incident : incidentsList) {
+								if (incident.getCounter() == numberId) {
+									serviceHelper.deleteIncident(incident);
+								}
+							}
+
+						break;
 				case 5:
 					System.out.println("Total  number of incidents "+serviceHelper.countIncidents());
 					break;
