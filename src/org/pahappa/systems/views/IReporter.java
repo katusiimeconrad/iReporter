@@ -12,13 +12,17 @@ import java.util.Scanner;
 
 public class IReporter {
 
+	/**
+	 * This function helps print incidents with a numbered format.
+	 * It also sets the counter attribute in the Incident class.
+	 * @param incidents
+	 */
 	public static void printIncidents(List<Incident> incidents){
 		System.out.println("======== All Incidents =======");
 		int counter = 0;
-		Incident in = new Incident();
 		for(Incident item:incidents){
-			in.setCounter(++counter);
-			System.out.println(in.getCounter()+". "+item);
+			item.setCounter(++counter);
+			System.out.println(item.getCounter()+". "+item);
 		}
 	}
 
@@ -30,24 +34,30 @@ public class IReporter {
 	public static void printIncidents(List<Incident> incidents, String type){
 		System.out.println("======== "+ type +" =======");
 		int counter = 0;
-		Incident in = new Incident();
 		for(Incident item:incidents){
-			in.setCounter(++counter);
-			System.out.println(in.getCounter()+". "+item);
+			item.setCounter(++counter);
+			System.out.println(item.getCounter()+". "+item);
 		}
 	}
 
-	public static Incident check(List<Incident> incidents, int chosen){
+	/**
+	 * This method helps to call the update method to update an incident.
+	 * @param incidents
+	 * @param chosen
+	 * @return
+	 */
+	public static Incident check(List<Incident> incidents, int chosen) {
 		Scanner sc = new Scanner(System.in);
-		for(Incident item: incidents){
-			if(item.getCounter() == chosen){
+		for (Incident item : incidents) {
+			if (item.getCounter() == chosen) {
 				System.out.println("Enter the new Title: ");
 				item.setTitle(sc.nextLine());
 				System.out.println("Choose 1 for Corruption Incident or 2 for Intervention incident");
 				int type3 = sc.nextInt();
-				if(type3 == 1){
+				sc.nextLine();
+				if (type3 == 1) {
 					item.setType(Type.RED_FLAG);
-				}else if(type3 == 2){
+				} else if (type3 == 2) {
 					item.setType(Type.INTERVENTION);
 				}
 				System.out.println("Enter the new Comment");
@@ -56,6 +66,7 @@ public class IReporter {
 			}
 		}
 		return null;
+	}
 
 	/**
 	 * Prints the details of an incident and displays the back option
@@ -121,6 +132,8 @@ public class IReporter {
 			int option;
 			option =sc.nextInt();
 			switch (option){
+
+//				Getting all incidents
 				case 1:
 					boolean x = true;
 					while(x) {
@@ -183,6 +196,8 @@ public class IReporter {
 						}
 					}
 					break;
+
+//				Saving incidents.
 				case 2:
 					Incident incident1 = new Incident();
 					System.out.println("Please select(Number) the type of your incident \n" +
@@ -211,13 +226,13 @@ public class IReporter {
 					System.out.println(savedIncident);
 
 					break;
+
+//				Updating an incident
 				case 3:
-					Incident incident3 = new Incident();
 					System.out.println("===== Please Choose the number of the incident to edit =====");
 					printIncidents(serviceHelper.getAllIncidents());
 					int chosen = sc.nextInt();
-					List<Incident> incidents = serviceHelper.getAllIncidents();
-					System.out.println(check(incidents, chosen));
+					System.out.println(check(serviceHelper.getAllIncidents(), chosen));
 
 					break;
 				case 4:
