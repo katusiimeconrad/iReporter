@@ -30,6 +30,27 @@ public class IReporter {
 			System.out.println(in.getCounter()+". "+item);
 		}
 	}
+
+	public static Incident check(List<Incident> incidents, int chosen){
+		Scanner sc = new Scanner(System.in);
+		for(Incident item: incidents){
+			if(item.getCounter() == chosen){
+				System.out.println("Enter the new Title: ");
+				item.setTitle(sc.nextLine());
+				System.out.println("Choose 1 for Corruption Incident or 2 for Intervention incident");
+				int type3 = sc.nextInt();
+				if(type3 == 1){
+					item.setType(Type.RED_FLAG);
+				}else if(type3 == 2){
+					item.setType(Type.INTERVENTION);
+				}
+				System.out.println("Enter the new Comment");
+				item.setComment(sc.nextLine());
+				return item;
+			}
+		}
+		return null;
+	}
 	
 	public static void main(String[] args) throws Exception {
 		IncidentServiceImpl serviceHelper =new IncidentServiceImpl();
@@ -45,7 +66,7 @@ public class IReporter {
          boolean i =true;
 		while (i){
 			System.out.println("1. Get Incidents\n" +
-					"2. Save Incidents\n" +
+					"2. Create Record\n" +
 					"3. Update Incidents\n" +
 					"4. Delete Incidents\n" +
 					"5. Total number of incidents\n" +
@@ -113,27 +134,13 @@ public class IReporter {
 
 					break;
 				case 3:
-					Incident incident1 = new Incident();
+					Incident incident3 = new Incident();
 					System.out.println("===== Please Choose the number of the incident to edit =====");
-					printIncidents(servicehelper.getAllIncidents());
+					printIncidents(serviceHelper.getAllIncidents());
 					int chosen = sc.nextInt();
-					sc.nextLine();
-					for(Incident item: servicehelper.getAllIncidents()){
-						if(item.getCounter() == chosen){
-							System.out.println("Enter the new Title: ");
-							incident1.setTitle(sc.nextLine());
-							System.out.println("Choose 1 for Corruption Incident or 2 for Intervention incident");
-							int type = sc.nextInt();
-							if(type == 1){
-								incident1.setType(Type.RED_FLAG);
-							}else if(type == 2){
-								incident1.setType(Type.INTERVENTION);
-							}
-							System.out.println("Enter the new Comment");
-							incident1.setComment(sc.nextLine());
-							System.out.println(servicehelper.updateIncident(incident1));
-						}
-					}
+					List<Incident> incidents = serviceHelper.getAllIncidents();
+					System.out.println(check(incidents, chosen));
+
 					break;
 				case 4:
 					System.out.println("hello katusiime kabogoza");
