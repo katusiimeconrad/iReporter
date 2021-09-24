@@ -18,6 +18,16 @@ public class Incident {
     private Status status;
     private Date  createdOn;
     private String comment;
+	private int counter;
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+
 	public int getId() {
 		return id;
 	}
